@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balasubramanian Swaminathan – Actuarial Platform & Data Engineering Leader</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    
+    /* Floating particles animation */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #42a5f5, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(129, 199, 132, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 107, 107, 0.4), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(144, 202, 249, 0.4), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(129, 199, 132, 0.2), transparent);
+      background-repeat: repeat;
+      background-size: 200px 100px;
+      animation: float 20s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    /* Animated scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+    }
+    
+    .scroll-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #42a5f5, #81c784, #ff6b6b);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Cursor trail effect */
+    .cursor-trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(66, 165, 245, 0.6), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: screen;
+      animation: cursor-pulse 1s infinite;
+    }
+    
+    @keyframes cursor-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.5); opacity: 0.3; }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px) translateX(0px);
+      }
+      33% {
+        transform: translateY(-10px) translateX(10px);
+      }
+      66% {
+        transform: translateY(5px) translateX(-5px);
+      }
+      100% {
+        transform: translateY(0px) translateX(0px);
+      }
+    }
+    
+    /* Ensure content is above particles */
+    header, section, footer {
+      position: relative;
+      z-index: 2;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+      animation: grid-move 20s linear infinite;
+    }
+    
+    @keyframes grid-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(10px, 10px); }
+    }
+    
+    /* Floating geometric shapes */
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(129, 199, 132, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+      animation: shape-float 15s ease-in-out infinite;
+    }
+    
+    @keyframes shape-float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(10px, -10px) rotate(120deg); }
+      66% { transform: translate(-10px, 10px) rotate(240deg); }
+    }
+    
+    header > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #64b5f6, #42a5f5, #90caf9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradient-shift 3s ease-in-out infinite, title-glow 4s ease-in-out infinite;
+      text-shadow: 0 0 30px rgba(66, 165, 245, 0.3);
+      transform: perspective(1000px) rotateX(0deg);
+      transition: transform 0.3s ease;
+    }
+    
+    h1:hover {
+      transform: perspective(1000px) rotateX(10deg) rotateY(5deg);
+      text-shadow: 0 0 50px rgba(66, 165, 245, 0.5);
+    }
+    
+    @keyframes title-glow {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(66, 165, 245, 0.3)); }
+      50% { filter: drop-shadow(0 0 30px rgba(66, 165, 245, 0.6)); }
+    }
+    
+    @keyframes gradient-shift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+    
+    header p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #b0bec5;
+      animation: fade-in-up 1s ease-out 0.5s both;
+    }
+    
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid transparent;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover {
+      border-color: #42a5f5;
+      background: rgba(66, 165, 245, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .nav-resume-btn {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24) !important;
+      color: white !important;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      animation: pulse-glow 2s infinite;
+      box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+    }
+    
+    .nav-resume-btn::after {
+      content: '📄';
+      margin-left: 0.5rem;
+      animation: bounce 1s infinite;
+    }
+    
+    .nav-resume-btn:hover {
+      background: linear-gradient(45deg, #ee5a24, #c23616) !important;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+    
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      color: #64b5f6;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(45deg, #42a5f5, #1976d2);
+      border-radius: 2px;
+    }
+    
+    .project {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slide-in-up 0.6s ease-out forwards;
+    }
+    
+    .project:nth-child(1) { animation-delay: 0.1s; }
+    .project:nth-child(2) { animation-delay: 0.2s; }
+    .project:nth-child(3) { animation-delay: 0.3s; }
+    .project:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes slide-in-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(66, 165, 245, 0.1), transparent);
+      transition: left 0.6s;
+    }
+    
+    .project:hover::before {
+      left: 100%;
+    }
+    
+    .project:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 25px 50px rgba(66, 165, 245, 0.2),
+        0 0 30px rgba(66, 165, 245, 0.1);
+      border-color: rgba(66, 165, 245, 0.4);
+    }
+    
+    .project h3 {
+      color: #81c784;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .project em {
+      color: #90caf9;
+      font-style: italic;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    
+    .project ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .project li {
+      margin-bottom: 0.8rem;
+      color: #cfd8dc;
+    }
+    
+    .project p:last-of-type {
+      background: rgba(66, 165, 245, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #42a5f5;
+      margin-top: 1.5rem;
+    }
+    
+    .skills {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .skills ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .skills li {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #81c784;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skills li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(129, 199, 132, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    
+    .skills li:hover::before {
+      transform: translateX(100%);
+    }
+    
+    .skills li:hover {
+      transform: translateX(15px) scale(1.05);
+      background: rgba(255, 255, 255, 0.15);
+      border-left-color: #4caf50;
+      box-shadow: 0 10px 25px rgba(129, 199, 132, 0.2);
+    }
+    
+    /* Typing animation for about section */
+    #about p {
+      overflow: hidden;
+      border-right: 2px solid #42a5f5;
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: typing 4s steps(200, end), blink-caret 0.75s step-end infinite;
+      max-width: fit-content;
+    }
+    
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #42a5f5; }
+    }
+    
+    /* Intersection observer animation classes */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .skills strong {
+      color: #81c784;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    #contact {
+      text-align: center;
+    }
+    
+    .contact-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .contact-info p {
+      font-size: 1.1rem;
+      color: #b0bec5;
+    }
+    
+    .contact-info a {
+      color: #64b5f6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-info a:hover {
+      color: #90caf9;
+    }
+    
+    .resume-btn {
+      background: linear-gradient(45deg, #42a5f5, #1976d2);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(66, 165, 245, 0.3);
+    }
+    
+    .resume-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(66, 165, 245, 0.4);
+      background: linear-gradient(45deg, #1976d2, #0d47a1);
+    }
+    
+    footer {
+      background: #121212;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #333;
+      color: #757575;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      section {
+        padding: 2rem 1rem;
+      }
+      
+      .contact-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      nav {
+        gap: 1rem;
+      }
+      
+      nav a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-progress" id="scrollProgress"></div>
+  </div>
+
+  <!-- Cursor Trail -->
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+<header>
+  <h1>Balasubramanian Swaminathan</h1>
+  <p><strong>Actuarial Platform & Data Engineering Leader</strong></p>
+  <nav>
+    <a href="#education">Education</a>
+    <a href="#projects">College Project</a>
+    <a href="#about">About Me</a>
+    <a href="#project">Projects & Achivements</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a href="resume.pdf" target="_blank" class="nav-resume-btn">Resume</a>
+  </nav>
+</header>
+
+<section id="education">
+  <h2>Education</h2>
+  <p>Master of Engineering - Instrumentation, Madras Institute of Technology, Anna University, India</p>
+  <p>Bachelor of Engineering - Electrical and Electronics, Adhiparaskathi Engg. College, University of Madras, India</p>
+</section>
+
+<section id="projects">
+  <h2>College Project</h2>
+  <div class="project">
+    <h3>Fuzzy PID Controller with Genetic Algorithms</h3>
+    <p>Designing a Fuzzy PID Controller with Genetic Algorithms<p>
+<p>•	Created a fuzzy-PID control system by blending fuzzy logic with classic PID techniques, tested extensively in MATLAB Simulink to handle the nonlinear quirks of instruments.<p>
+<p>•	Converted and optimized MATLAB simulations into clean, efficient C++ code for deployment in real-time embedded systems.<p>
+<p>•	Represented fuzzy membership levels and PID gains as chromosomes in a genetic algorithm, making automated tuning straightforward and comprehensive.<p>
+<p>•	Designed a multi-criteria fitness function that balances energy efficiency with performance metrics like squared error, overshoot, and settling time.<p>
+<p>•	Ran multiple iterations of the genetic algorithm in MATLAB to tune controller parameters effectively under different disturbance scenarios.<p>
+</section>
+
+
+<section id="about" class="fade-in-section">
+  <h2>About Me</h2>
+  <p>
+    IT leader with 20 years of experience modernizing actuarial platforms<br>
+    for life and health insurers. I define multi-year platform roadmaps,<br>
+    drive high availability solutions, and deliver cost-efficient<br>
+    cloud-native data architectures. Focused on automation,<br>
+    observability, and team leadership.
+  </p>
+</section>
+
+<section id="project" class="fade-in-section">
+    <h2>Work Experience</h2>
+  <section id="project" class="fade-in-section">
+    <h2>Key Projects & Achievements</h2>
+
+    <div class="project">
+      <h3>Ramco Systems (2001 – 2008)</h3>
+      <em>Senior Developer & Team Leader</em>
+      <div class="sub-project">
+        <h4>Apr 2002 – Jan 2003: Ramco Optima</h4>
+        <p>Migrated a generic process-industry expert-system into VC++/MFC6 with MS SQL and multithreading, enhancing UI functionality and memory robustness; validated real-time control loops on-site at Madras Cement Ltd.</p>
+      </div>
+      <div class="sub-project">
+        <h4>Feb 2003 – Sep 2004: Data Modeling & Analysis Tool</h4>
+        <p>Built a real-time soft-sensor in VC++/MFC using neural networks, PLS regression, clustering and PCA for data cleaning and dimensionality reduction; integrated OPC/SCADA data feeds and deployed for fineness prediction at Ambuja and MCL cement plants.</p>
+      </div>
+      <div class="sub-project">
+        <h4>Feb 2005 – Aug 2005: Optima Enhancement</h4>
+        <p>Led a 4-developer team to extend the Optima expert system with string/date-time data types, port it to 64-bit Itanium, and implement multithreading optimizations for sub-second cement and power-plant loop control.</p>
+      </div>
+      <div class="sub-project">
+        <h4>Apr 2006 – Sep 2006: Genetic Programming Module</h4>
+        <p>Architected a symbolic-regression soft-sensor tool in VC++/C#/VB .NET, leveraging genetic programming to auto-derive mathematical models (e.g., CO-emission prediction) for thermal power-plant analytics.</p>
+      </div>
+      <div class="sub-project">
+        <h4>Jan 2007 – Apr 2007: Rule Engine Evaluation</h4>
+        <p>Evaluated ILOG and JBossRule engines for enterprise lifecycle support, syntax and performance; wrapped rule services in Java/C# web APIs and integrated them into the Ramco Enterprise Suite.</p>
+      </div>
+      <div class="sub-project">
+        <h4>Jun 2007 – Sep 2007: Business Process Optimization Editor & Solver</h4>
+        <p>Directed the creation of a generic LP-solver with an ASCII-to-LP parser and embedded math editor, exposing solver functionality as RESTful web services within Ramco VirtualWorks for dynamic process automation.</p>
+      </div>
+      <div class="sub-project">
+        <h4>Jan 2008 – Jun 2008: Route Optimization for Logistics</h4>
+        <p>Led development of a C++/COM/SQL-based LP solver for the Vehicle Routing Problem with Time Windows, integrating it into Ramco VirtualWorks to deliver enterprise-grade logistics optimization.</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Cognizant Technology Solutions, Chennai, India (Jun 2008 – Dec 2012)</h3>
+      <em>Project Manager / Project Lead – Healthcare Domain</em>
+      <div class="sub-project">
+        <h4>Jun 2008 – Mar 2009: RIOS Re-Platform (UHG International)</h4>
+        <p>Led phase-2 re-platforming of RIOS from SQR/UNIX to a .NET/Crystal Reports solution on MS SQL 2005 and DB2; architected the data-access layer in C#, enforced coding standards, and delivered scalable, maintainable reporting services.</p>
+      </div>
+      <div class="sub-project">
+        <h4>Apr 2009 – Dec 2011: MMS Data Management (Molina Medicaid – Maine & Idaho)</h4>
+        <p>Directed a 16-member team to develop and maintain SSIS-based ETL workflows and VB .NET interfaces for Medicaid eligibility, enrollment, and claims data integration into QNXT. Key contributions:</p>
+        <ul>
+          <li>Designed and automated daily ETL pipelines, eliminating manual processing and enhancing data reliability.</li>
+          <li>Developed and optimized SSRS reports by migrating legacy TR/CR reports and enabling real-time operational dashboards.</li>
+          <li>Established unit-testing, code-review, and mentoring processes to ensure high code quality and on-time delivery.</li>
+          <li>Managed full SDLC—requirements, design, implementation, testing, deployment, and 24×7 production support—tracking change requests and communicating risks and milestones to stakeholders.</li>
+          <li>Enforced HIPAA-compliant data governance through rigorous validation, audit trails, and performance tuning.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h4>Jan 2012 – Jun 2012: Facets MSM ICD-10 Remediation (WellPoint)</h4>
+        <p>Led a 10-member team through the ICD-10 upgrade of Cognizant MSM on UNIX; coordinated capacity planning, performance tuning of Sybase/Facets interfaces, and stakeholder communication to meet regulatory deadlines.</p>
+      </div>
+      <div class="sub-project">
+        <h4>Jun 2012 – Dec 2012: CSP F2F Migration (UHG Facets Solution Group)</h4>
+        <p>Managed end-to-end migration of customer-service modules into Facets using Sybase 15, IBM DataStage ETL, and MS Project; implemented risk-mitigation strategies, tracked milestones, and orchestrated cross-functional teams to achieve on-schedule go-live.</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>MetLife (via Cognizant), Onsite Technical Lead (2013 – 2020)</h3>
+      <div class="sub-project">
+        <h4>Jan 2013 – Dec 2015: Asset Projection & ETL Lead (Kamakura Risk Manager)</h4>
+        <ul>
+          <li>Managed BAU support for Kamakura Risk Manager COTS—ingesting investment, market and interest-rate scenario feeds into SQL Server for CFT, ALM and RBC projections.</li>
+          <li>Designed and implemented SSIS-based ETL pipelines sourcing from MarkIT EDM and legacy systems, improving data quality and reducing manual reconciliation by 40%.</li>
+          <li>Validated, transformed and loaded security-master, portfolio, loan and derivatives data into the KRM modeling schema, ensuring end-to-end data integrity.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h4>Jan 2015 – Dec 2017: Data Warehouse Performance & Migration Lead</h4>
+        <ul>
+          <li>Migrated KRM's SQL Server asset-projection database to Microsoft Parallel Data Warehouse (PDW), achieving 5× query performance gains for large-scale HPC-grid runs.</li>
+          <li>Continued BAU support for Cash Flow Testing and GAAP Loss Recognition—tuning PDW distribution and indexing strategies for sub-minute report generation.</li>
+          <li>Led the transition of asset-allocation data feeds from mainframe to PDW, standardizing metadata and implementing automated load processes.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h4>Jan 2017 – Dec 2019: Strategic Migration Lead (FIS Prophet ALS)</h4>
+        <ul>
+          <li>Spearheaded the replacement of KRM with FIS Prophet ALS for asset projections—oversaw Data Conversion System (DCS) pipelines to generate Model Point Files from existing investment feeds.</li>
+          <li>Integrated Prophet's encrypted output via the R2DB tool into SQL Server, preserving existing asset-projection formats and enabling seamless business continuity.</li>
+          <li>Provisioned and configured the HPC-grid run environment for Prophet ALS, coordinating with infrastructure teams to validate end-to-end workflow.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h4>Jan 2018 – Dec 2020: Cloud Platform Modernization – Azure Asset Data Repository</h4>
+        <ul>
+          <li>Defined functional requirements and oversaw migration of on-prem SQL repositories to an Azure-based Asset Data Repository, leveraging Azure Data Lake and Databricks/Spark for scalable analytics.</li>
+          <li>Collaborated with cloud architects to design data ingestion patterns, security policies and CI/CD pipelines—accelerating data availability for downstream risk and finance teams.</li>
+        </ul>
+      </div>
+      <p><strong>Key Technologies:</strong> COTS (KRM, Prophet ALS), SQL Server, SSIS, PDW, HPC Grid, Azure Data Lake, Databricks/Spark, ETL/ELT, ALM/CFT/RBC projections, data governance.</p>
+    </div>
+
+    <div class="project">
+      <h3>MetLife – Group Benefits Valuation LDTI Compliance (Apr 2020 – Jan 2023)</h3>
+      <em>SAFe 5.0 Scrum Master & Actuarial Data Engineer, Cary, NC</em>
+      <ul>
+        <li><strong>Agile Delivery & Team Leadership:</strong> Served as Scrum Master under SAFe 5.0 for IT enabler and BAU teams in the Group Benefits reserve domain, facilitating PI planning, iteration planning, reviews and retrospectives to drive on-time delivery.</li>
+        <li><strong>End-to-End ETL Pipeline Development:</strong> Architected and implemented data pipelines from diverse administrative feeds into the PolySystem Health Master and Life Master environments, automating reserve-calculation inputs for the Group Reserve database to support Long Duration Targeted Improvement (LDTI) reporting.</li>
+        <li><strong>Process Automation & Data Governance:</strong> Designed scalable workflows with embedded key controls, error-handling routines, and logical transformations—reducing manual intervention by over 50% and ensuring HIPAA-grade data integrity for disability income valuations.</li>
+        <li><strong>Security Compliance Coordination:</strong> Led FTP credentials remediation across multiple source systems, partnering with security and operations teams to meet audit requirements and strengthen data-access controls.</li>
+        <li><strong>Stakeholder Collaboration & Performance Optimization:</strong> Worked closely with actuarial, finance, and IT stakeholders to refine data models, tune pipeline performance, and transition reserve-processing workflows from Admin System to the PolySystem platform and then upload the reserve in Global reserve repository, ensuring seamless business continuity.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <h3>MetLife – Sr. Scrum Leader I / Application Lead (Oct 2022 – Dec 2024)</h3>
+      <ul>
+        <li>Directed Japan & Korea LDTI valuation runs (production + regression), chairing daily grid‑run stand‑ups and publishing monthly migration dashboards to executives.</li>
+        <li>Served as Product Owner for LDTI automation backlog – delivered F4WL coinsurance & YRT true‑up, MRB/DAC model merge, TUTAM & Propensity‑Roll file promotions, and Korea file‑transfer automation, trimming cycle time 40%.</li>
+        <li>Closed a high‑severity data‑lineage audit finding by scripting a mainframe‑to‑CSV Perl utility, enabling field‑level reconciliation and securing Deloitte/SOX sign‑off ahead of schedule.</li>
+        <li>Led DIL application portfolio (Feb '24‑Dec '24): automated Prophet‑to‑Poly asset flows, tuned EMEA GRR pipelines, built multi‑region AFDF transfers, and onboarded new IFRS & Actuarial regions—supporting UAT & production across EMEA, LATAM, APAC, and U.S. lines.</li>
+        <li>Cut infra costs ≈ $10K per environment by migrating AFDF/DIL/ADAM codebase from Anaconda to open‑source Python—identifying compatible packages and updating scripts with zero downtime.</li>
+        <li>Championed modernization – scoped SSIS‑to‑ADF migration, completed SAFe RTE/Scrum‑Master and Azure + Databricks DE certifications, and mentored teams on cloud & DevSecOps best practices.</li>
+        <li>Trusted business liaison: supported actuaries in Japan, Korea & Malaysia, drove risk logs, and coordinated 12+ audits with zero follow‑up findings.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <h3>Unified Actuarial Platform (UAP) — TOSCA Automation Testing Lead (Jan 2025 – Present)</h3>
+      <em>MetLife</em>
+      <p><strong>Project mission:</strong> merge a half‑dozen legacy actuarial valuation tools into a single cloud‑native platform, slash infrastructure & licensing spend, and consolidate disparate EAI codebases into a maintainable, DevOps‑friendly stack.</p>
+      
+      <h4>My Impact in a Nutshell</h4>
+      <ul>
+        <li><strong>Architect & owner of UAP's enterprise‑grade TOSCA practice</strong> — from vision and tooling to day‑to‑day execution.</li>
+        <li><strong>People leader for a 12‑member, cross‑skill QA guild</strong> (API, UI/UX, Databricks data‑integrity, DevOps integration).</li>
+        <li><strong>Automation evangelist:</strong> shifted teams left, embedded quality gates in CI/CD, and cut regression cycle time from 2 days to ≈ 3 hours.</li>
+      </ul>
+
+      <h4>Highlights & Achievements</h4>
+      <div class="sub-project">
+        <h5>1. End‑to‑End Test Strategy & Roadmap</h5>
+        <ul>
+          <li>Mapped > 90% of actuarial "money flows" across Cash‑Flow Testing, LDTI, IFRS & GAAP modules.</li>
+          <li>Introduced risk‑based test design that focuses automation where financial exposure is highest.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h5>2. Scalable, Reusable TOSCA Framework</h5>
+        <ul>
+          <li>Built a plug‑in architecture (API, UI, Databricks, file‑transfer) with 80% component reuse across product lines.</li>
+          <li>Added data‑driven libraries and self‑healing locators, driving maintenance effort down 45% YoY.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h5>3. CI/CD & DevOps Integration</h5>
+        <ul>
+          <li>Wired TOSCA into Azure DevOps pipelines: every PR spins up a disposable test environment, executes smoke + impact‑based regression, and posts results back to Git as status checks.</li>
+          <li>Containerized TOSCA Distributed Execution Agents (DEX) for frictionless scale‑out on Kubernetes/HPC nodes.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h5>4. Databricks Data‑Integrity Automation</h5>
+        <ul>
+          <li>Created PySpark‑backed TOSCA modules that validate Delta‑Lake transformations against actuarial business rules, catching silent data drifts 48 hrs earlier than prior manual spot checks.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h5>5. Actionable Quality Analytics</h5>
+        <ul>
+          <li>Defined a "single pane of glass" Power BI dashboard: coverage, pass‑rate trends, flakiness index, MTTR, and escape defect density.</li>
+          <li>Metrics now feed quarterly OKRs and have already supported a 30% drop in escaped production defects.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h5>6. Regression Suite at Scale</h5>
+        <ul>
+          <li>Automated 600+ high‑risk scenarios spanning UI, REST, file‑transfer and grid‑compute workflows; nightly run completes in ≈ 3 hrs (vs 16 hrs manual) with fully automated triage hooks.</li>
+          <li>Demonstrated ROI within two sprints: first full suite uncovered a $5M reserve‑calculation defect before UAT.</li>
+        </ul>
+      </div>
+      <div class="sub-project">
+        <h5>7. Leadership & Collaboration</h5>
+        <ul>
+          <li>Coaches scrum teams on BDD, API virtualization and shift‑left peer testing; onboarded new hires with a two‑week "TOSCA boot camp."</li>
+          <li>Works daily with solution architects, actuaries and DevOps to align pipelines, environments and release cadences.</li>
+        </ul>
+      </div>
+
+      <p><strong>Key Technologies:</strong> TOSCA (v16+) • Azure DevOps Pipelines • Kubernetes & DEX • PySpark / Databricks • REST & gRPC • Power BI • Git • BDD (SpecFlow) • Kubernetes Secrets & Service Connections • SQL/Delta Lake validation</p>
+      <p><strong>Bottom line:</strong> by marrying deep actuarial domain knowledge with modern test‑automation engineering, I'm helping MetLife deliver a unified platform that is faster to release, cheaper to run, and trustworthy at every step of the valuation lifecycle.</p>
+    </div>
+
+    <div class="project">
+      <h3>Databricks Upskilling Program for Actuarial Analysts (Oct 2024 – Present)</h3>
+      <em>MetLife</em>
+      <ul>
+        <li><strong>Designed a bespoke "Actuary‑to‑Databricks" curriculum</strong> that blends actuarial use‑cases (reserve roll‑forwards, LDTI analytics, ALM simulations) with hands‑on PySpark labs—turning domain experts into self‑sufficient data engineers in 12 weeks.</li>
+        <li><strong>Built a companion microsite</strong> featuring bite‑sized videos, code‑along notebooks, cheat sheets, and an interactive Q&A forum; 85% of learners return weekly for refreshers or advanced topics.</li>
+        <li><strong>Led live cohort training for 100+ actuaries</strong>—delivering four virtual boot‑camps, 20 office‑hour sessions, and personalized "code clinics" that resolved > 250 real‑world notebook blockers.</li>
+        <li><strong>Gamified the journey</strong> with badges and capstone challenges; 70% of participants earned the "Databricks Bronze" badge and 35% progressed to "Silver," completing a full PySpark model‑point‑file pipeline.</li>
+        <li><strong>Integrated learning with day‑to‑day work:</strong> shipped starter notebooks and reusable widgets that plug directly into UAP's Delta Lake tables, cutting exploratory data‑prep time from hours to minutes.</li>
+        <li><strong>Captured and published success metrics</strong> on a Power BI dashboard—showing a 40% drop in analyst‑to‑IT help tickets and a 25% speed‑up in quarterly valuation data wrangling.</li>
+        <li><strong>Institutionalized the program</strong> by training six internal "champions," creating a self‑sustaining community of practice that now hosts monthly lightning talks and notebook‑swap sessions.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills" class="skills fade-in-section">
+    <h2>Core Skills & Competencies</h2>
+    <ul>
+      <li><strong>Actuarial Platforms:</strong> FIS Prophet (ALS, IFRS 17, LDTI), PolySystems, Kamakura</li>
+      <li><strong>Cloud & Data Engineering:</strong> Azure (Synapse, Databricks, Data Factory), AWS (Glue, EMR), Snowflake</li>
+      <li><strong>DevOps & Automation:</strong> CI/CD, Kubernetes, Terraform, Ansible, RPA</li>
+      <li><strong>Observability & SRE:</strong> Application Insights, Prometheus, Grafana, Azure Automation</li>
+      <li><strong>Leadership & Delivery:</strong> Agile/SAFe, PMP, Scrum Master, cross-functional team building</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="fade-in-section">
+    <h2>Contact</h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <p>Email: <a href="mailto:sbala2me@gmail.com">sbala2me@gmail.com</a></p>
+        <p>Phone: +1 (848) 702-4902</p>
+        <p>Location: Cary, NC</p>
+        <p>GitHub: <a href="https://github.com/sbala2me">sbala2me</a></p>
+        <p>Linkedin: <a href="https://www.linkedin.com/in/sbala2me/">sbala2me</a></p
+      </div>
+      <a href="resume.pdf" class="resume-btn" target="_blank">Resume</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Balasubramanian Swaminathan</p>
+  </footer>
+
+  <script>
+    // Scroll Progress Indicator
+    window.addEventListener('scroll', () => {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercentage = (scrollTop / scrollHeight) * 100;
+      scrollProgress.style.width = scrollPercentage + '%';
+    });
+
+    // Cursor Trail Effect
+    const cursorTrail = document.getElementById('cursorTrail');
+    let mouseX = 0, mouseY = 0;
+    let trailX = 0, trailY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateTrail() {
+      trailX += (mouseX - trailX) * 0.1;
+      trailY += (mouseY - trailY) * 0.1;
+      
+      cursorTrail.style.left = trailX - 10 + 'px';
+      cursorTrail.style.top = trailY - 10 + 'px';
+      
+      requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease-in';
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
+</body>
+</html>
