@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balasubramanian Swaminathan – Actuarial Platform & Data Engineering Leader</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    
+    /* Floating particles animation */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #42a5f5, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(129, 199, 132, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 107, 107, 0.4), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(144, 202, 249, 0.4), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(129, 199, 132, 0.2), transparent);
+      background-repeat: repeat;
+      background-size: 200px 100px;
+      animation: float 20s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    /* Animated scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+    }
+    
+    .scroll-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #42a5f5, #81c784, #ff6b6b);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    
+    /* Cursor trail effect */
+    .cursor-trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(66, 165, 245, 0.6), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: screen;
+      animation: cursor-pulse 1s infinite;
+    }
+    
+    @keyframes cursor-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.5); opacity: 0.3; }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px) translateX(0px);
+      }
+      33% {
+        transform: translateY(-10px) translateX(10px);
+      }
+      66% {
+        transform: translateY(5px) translateX(-5px);
+      }
+      100% {
+        transform: translateY(0px) translateX(0px);
+      }
+    }
+    
+    /* Ensure content is above particles */
+    header, section, footer {
+      position: relative;
+      z-index: 2;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+      animation: grid-move 20s linear infinite;
+    }
+    
+    @keyframes grid-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(10px, 10px); }
+    }
+    
+    /* Floating geometric shapes */
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(129, 199, 132, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+      animation: shape-float 15s ease-in-out infinite;
+    }
+    
+    @keyframes shape-float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(10px, -10px) rotate(120deg); }
+      66% { transform: translate(-10px, 10px) rotate(240deg); }
+    }
+    
+    header > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #64b5f6, #42a5f5, #90caf9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradient-shift 3s ease-in-out infinite, title-glow 4s ease-in-out infinite;
+      text-shadow: 0 0 30px rgba(66, 165, 245, 0.3);
+      transform: perspective(1000px) rotateX(0deg);
+      transition: transform 0.3s ease;
+    }
+    
+    h1:hover {
+      transform: perspective(1000px) rotateX(10deg) rotateY(5deg);
+      text-shadow: 0 0 50px rgba(66, 165, 245, 0.5);
+    }
+    
+    @keyframes title-glow {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(66, 165, 245, 0.3)); }
+      50% { filter: drop-shadow(0 0 30px rgba(66, 165, 245, 0.6)); }
+    }
+    
+    @keyframes gradient-shift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+    
+    header p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #b0bec5;
+      animation: fade-in-up 1s ease-out 0.5s both;
+    }
+    
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid transparent;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover {
+      border-color: #42a5f5;
+      background: rgba(66, 165, 245, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .nav-resume-btn {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24) !important;
+      color: white !important;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      animation: pulse-glow 2s infinite;
+      box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+    }
+    
+    .nav-resume-btn::after {
+      content: '📄';
+      margin-left: 0.5rem;
+      animation: bounce 1s infinite;
+    }
+    
+    .nav-resume-btn:hover {
+      background: linear-gradient(45deg, #ee5a24, #c23616) !important;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+    
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      color: #64b5f6;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(45deg, #42a5f5, #1976d2);
+      border-radius: 2px;
+    }
+    
+    .project {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slide-in-up 0.6s ease-out forwards;
+    }
+    
+    .project:nth-child(1) { animation-delay: 0.1s; }
+    .project:nth-child(2) { animation-delay: 0.2s; }
+    .project:nth-child(3) { animation-delay: 0.3s; }
+    .project:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes slide-in-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(66, 165, 245, 0.1), transparent);
+      transition: left 0.6s;
+    }
+    
+    .project:hover::before {
+      left: 100%;
+    }
+    
+    .project:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 25px 50px rgba(66, 165, 245, 0.2),
+        0 0 30px rgba(66, 165, 245, 0.1);
+      border-color: rgba(66, 165, 245, 0.4);
+    }
+    
+    .project h3 {
+      color: #81c784;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .project em {
+      color: #90caf9;
+      font-style: italic;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    
+    .project ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .project li {
+      margin-bottom: 0.8rem;
+      color: #cfd8dc;
+    }
+    
+    .project p:last-of-type {
+      background: rgba(66, 165, 245, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #42a5f5;
+      margin-top: 1.5rem;
+    }
+    
+    .skills {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .skills ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .skills li {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #81c784;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skills li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(129, 199, 132, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    
+    .skills li:hover::before {
+      transform: translateX(100%);
+    }
+    
+    .skills li:hover {
+      transform: translateX(15px) scale(1.05);
+      background: rgba(255, 255, 255, 0.15);
+      border-left-color: #4caf50;
+      box-shadow: 0 10px 25px rgba(129, 199, 132, 0.2);
+    }
+    
+    /* Typing animation for about section */
+    #about p {
+      overflow: hidden;
+      border-right: 2px solid #42a5f5;
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: typing 4s steps(200, end), blink-caret 0.75s step-end infinite;
+      max-width: fit-content;
+    }
+    
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #42a5f5; }
+    }
+    
+    /* Intersection observer animation classes */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .skills strong {
+      color: #81c784;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    #contact {
+      text-align: center;
+    }
+    
+    .contact-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .contact-info p {
+      font-size: 1.1rem;
+      color: #b0bec5;
+    }
+    
+    .contact-info a {
+      color: #64b5f6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-info a:hover {
+      color: #90caf9;
+    }
+    
+    .resume-btn {
+      background: linear-gradient(45deg, #42a5f5, #1976d2);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(66, 165, 245, 0.3);
+    }
+    
+    .resume-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(66, 165, 245, 0.4);
+      background: linear-gradient(45deg, #1976d2, #0d47a1);
+    }
+    
+    footer {
+      background: #121212;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #333;
+      color: #757575;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      section {
+        padding: 2rem 1rem;
+      }
+      
+      .contact-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      nav {
+        gap: 1rem;
+      }
+      
+      nav a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-progress" id="scrollProgress"></div>
+  </div>
+
+  <!-- Cursor Trail -->
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+<header>
+  <h1>Balasubramanian Swaminathan</h1>
+  <p><strong>Actuarial Platform & Data Engineering Leader</strong></p>
+  <nav>
+    <a href="#education">Education</a>
+    <a href="#projects">College Project</a>
+    <a href="#about">About Me</a>
+    <a href="#project">Projects & Achivements</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a href="resume.pdf" target="_blank" class="nav-resume-btn">Resume</a>
+  </nav>
+</header>
+
+<section id="education">
+  <h2>Education</h2>
+  <p>Master of Engineering - Instrumentation, Madras Institute of Technology, Anna University, India</p>
+  <p>Bachelor of Engineering - Electrical and Electronics, Adhiparaskathi Engg. College, University of Madras, India</p>
+</section>
+
+<section id="projects">
+  <h2>College Project</h2>
+  <div class="project">
+    <h3>Fuzzy PID Controller with Genetic Algorithms</h3>
+    <p>Designing a Fuzzy PID Controller with Genetic Algorithms<p>
+<p>•	Created a fuzzy-PID control system by blending fuzzy logic with classic PID techniques, tested extensively in MATLAB Simulink to handle the nonlinear quirks of instruments.<p>
+<p>•	Converted and optimized MATLAB simulations into clean, efficient C++ code for deployment in real-time embedded systems.<p>
+<p>•	Represented fuzzy membership levels and PID gains as chromosomes in a genetic algorithm, making automated tuning straightforward and comprehensive.<p>
+<p>•	Designed a multi-criteria fitness function that balances energy efficiency with performance metrics like squared error, overshoot, and settling time.<p>
+<p>•	Ran multiple iterations of the genetic algorithm in MATLAB to tune controller parameters effectively under different disturbance scenarios.<p>
+</section>
+
+
+<section id="about" class="fade-in-section">
+  <h2>About Me</h2>
+  <p>
+    IT leader with 20 years of experience modernizing actuarial platforms<br>
+    for life and health insurers. I define multi-year platform roadmaps,<br>
+    drive high availability solutions, and deliver cost-efficient<br>
+    cloud-native data architectures. Focused on automation,<br>
+    observability, and team leadership.
+  </p>
+</section>
+
+  <section id="project" class="fade-in-section">
+    <h2>Key Projects & Achievements</h2>
+
+    <div class="project">
+      <h3>Prophet 2024 Upgrade & Elastic Cloud Architecture</h3>
+      <em>MetLife Group Benefits Valuation Platform (Apr 2020 – Present)</em>
+      <ul>
+        <li>Led upgrade of FIS Prophet (ALS, IFRS 17/LDTI) across 1,000+ models and 200 TB of data with zero critical outages</li>
+        <li>Built Azure Kubernetes-hosted Prophet Distributed Processing with Databricks pipelines, reducing nightly valuation runtime from 14h to 6h</li>
+        <li>Delivered $1.2M in annual savings by optimizing infrastructure and automating provisioning</li>
+      </ul>
+      <p><strong>Technologies:</strong> FIS Prophet, Azure Kubernetes Service, Azure Databricks, Spark, ADLS Gen2, Terraform</p>
+    </div>
+
+    <div class="project">
+      <h3>KRM to Prophet ALS Migration & Performance Optimization</h3>
+      <em>MetLife Asset Projection Migration (2017 – 2019)</em>
+      <ul>
+        <li>Migrated Kamakura Risk Manager asset projection workflows to FIS Prophet ALS on Hadoop-based HPC grid</li>
+        <li>Developed Model Point File generation using DCS and integrated outputs back into SQL Server via R2DB</li>
+        <li>Enhanced runtime performance by 30% through phased migration and optimized data pipelines</li>
+      </ul>
+      <p><strong>Technologies:</strong> KRM, FIS Prophet DCS, SQL Server, SSIS, HDInsight, HPC Grid</p>
+    </div>
+
+    <div class="project">
+      <h3>Asset Data Repository Cloud Migration</h3>
+      <em>Azure Cloud Data Repository (2018 – 2020)</em>
+      <ul>
+        <li>Transformed on-premises SQL Server repository to Azure Synapse & Databricks Delta Lake, enabling petabyte-scale analytics</li>
+        <li>Implemented data lineage and governance using Unity Catalog and Azure Purview</li>
+        <li>Supported Finance & Risk teams with self-service analytics and near-real-time reporting</li>
+      </ul>
+      <p><strong>Technologies:</strong> Azure Synapse Analytics, Databricks Delta Lake, Azure Data Factory, PolyBase, Azure Data Catalog</p>
+    </div>
+
+    <div class="project">
+      <h3>Observability & Site Reliability Engineering</h3>
+      <em>Platform Reliability & Automation (2020 – Present)</em>
+      <ul>
+        <li>Introduced observability stack: Application Insights, Prometheus, Grafana, and automated failover workflows</li>
+        <li>Achieved 99.95% platform availability, surpassing SLAs and enhancing incident response through automated runbooks</li>
+        <li>Implemented RPA-driven QA automation, eliminating 400+ manual hours per month</li>
+      </ul>
+      <p><strong>Technologies:</strong> Azure Monitor, Prometheus, Grafana, Azure Automation, UiPath RPA</p>
+    </div>
+
+  </section>
+
+  <section id="skills" class="skills fade-in-section">
+    <h2>Core Skills & Competencies</h2>
+    <ul>
+      <li><strong>Actuarial Platforms:</strong> FIS Prophet (ALS, IFRS 17, LDTI), PolySystems, Kamakura</li>
+      <li><strong>Cloud & Data Engineering:</strong> Azure (Synapse, Databricks, Data Factory), AWS (Glue, EMR), Snowflake</li>
+      <li><strong>DevOps & Automation:</strong> CI/CD, Kubernetes, Terraform, Ansible, RPA</li>
+      <li><strong>Observability & SRE:</strong> Application Insights, Prometheus, Grafana, Azure Automation</li>
+      <li><strong>Leadership & Delivery:</strong> Agile/SAFe, PMP, Scrum Master, cross-functional team building</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="fade-in-section">
+    <h2>Contact</h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <p>Email: <a href="mailto:sbala2me@gmail.com">sbala2me@gmail.com</a></p>
+        <p>Phone: +1 (848) 702-4902</p>
+        <p>Location: Cary, NC</p>
+        <p>GitHub: <a href="https://github.com/sbala2me">sbala2me</a></p>
+        <p>Linkedin: <a href="https://www.linkedin.com/in/sbala2me/">sbala2me</a></p
+      </div>
+      <a href="resume.pdf" class="resume-btn" target="_blank">Resume</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Balasubramanian Swaminathan</p>
+  </footer>
+
+  <script>
+    // Scroll Progress Indicator
+    window.addEventListener('scroll', () => {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercentage = (scrollTop / scrollHeight) * 100;
+      scrollProgress.style.width = scrollPercentage + '%';
+    });
+
+    // Cursor Trail Effect
+    const cursorTrail = document.getElementById('cursorTrail');
+    let mouseX = 0, mouseY = 0;
+    let trailX = 0, trailY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateTrail() {
+      trailX += (mouseX - trailX) * 0.1;
+      trailY += (mouseY - trailY) * 0.1;
+      
+      cursorTrail.style.left = trailX - 10 + 'px';
+      cursorTrail.style.top = trailY - 10 + 'px';
+      
+      requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease-in';
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
+</body>
+</html>
